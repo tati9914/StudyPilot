@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>StudyPilot | Retro Edition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="screen-home" class="game-screen active">
+        <div class="card-os">
+            <div class="top-bar"><span>btyle.es</span></div>
+            <div class="content">
+                <div class="logo-circle">✈️</div>
+                <h1 class="title">StudyPilot</h1>
+                <p class="subtitle">Tu aventura de estudio comienza ahora.</p>
+                <div class="world-map">
+                    <div class="continent-shapes"></div>
+                </div>
+                <button class="btn-retro" onclick="changeScreen('screen-setup')">INICIAR VUELO</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="screen-setup" class="game-screen">
+        <div class="card-os">
+            <div class="top-bar"><span>btyle.es</span></div>
+            <div class="content">
+                <h2 class="section-title">Plan de Vuelo</h2>
+                <div class="input-group">
+                    <label>Materia</label>
+                    <input type="text" id="materia" placeholder="¿Qué vas a estudiar?">
+                </div>
+                <div class="input-group">
+                    <label>Origen</label>
+                    <input type="text" id="origen" placeholder="País de origen">
+                </div>
+                <div class="input-group">
+                    <label>Tiempo</label>
+                    <div class="row">
+                        <input type="number" id="v_horas" placeholder="Hrs">
+                        <input type="number" id="v_minutos" placeholder="Min">
+                    </div>
+                </div>
+                <button class="btn-retro brown" onclick="configurarVuelo()">GENERAR TICKET</button>
+                <div id="ticket-info" class="mini-ticket" style="display:none;">
+                    <p id="t-destino"></p>
+                    <button class="btn-retro pink" onclick="changeScreen('screen-seats')">ELEGIR ASIENTOS</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screen-seats" class="game-screen">
+        <div class="card-os">
+            <div class="top-bar"><span>btyle.es</span></div>
+            <div class="content">
+                <h2 class="section-title">Seleccionar Origen</h2>
+                <div class="airplane-map">
+                    <div class="cockpit-top"></div>
+                    <div id="seats-grid" class="seats-scroll"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screen-cabin" class="game-screen">
+        <div class="card-os cabin-mode">
+            <div class="top-bar"><span>btyle.es</span></div>
+            <div class="cabin-container">
+                <div class="window-frame">
+                    <div class="sky-view">
+                        <div class="clouds-moving"></div>
+                        <div class="wing-flat"></div>
+                    </div>
+                </div>
+                <div class="desk-clock">
+                    <div id="timer-display">25:00</div>
+                    <div class="clock-feet"></div>
+                </div>
+            </div>
+            <button class="btn-retro abort" onclick="location.reload()">ABORTAR</button>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
